@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>San Valentín</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>San Valentín 💘</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        border-radius: 20px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+        color: #e60073;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1.1rem;
+        margin: 10px 0;
+    }
+
+    img {
+        width: 100%;
+        max-width: 250px;
+        margin: 15px auto;
+        display: block;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    button {
+        border: none;
+        border-radius: 12px;
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+    }
+
+    #noBtn {
+        background-color: #ccc;
+    }
+
+    #final {
+        display: none;
+    }
+
+    .confetti {
+        position: fixed;
+        top: -10px;
+        width: 10px;
+        height: 10px;
+        background-color: red;
+        animation: fall linear forwards;
+        opacity: 0.9;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(360deg);
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card" id="start">
+    <h1 id="question">¿Quieres ser mi San Valentín? 💖</h1>
+    <img src="https://i.ibb.co/kVxSYZ3c/perrito.jpg" alt="Perrito tierno">
+    <p id="sadText">Prometo hacerte muy feliz 🥺</p>
+
+    <div class="buttons">
+        <button id="yesBtn">Sí 💘</button>
+        <button id="noBtn">No 💔</button>
+    </div>
+</div>
+ 
+
+<div class="card" id="final">
+    <h1>Una rosa para mi monita linda 🌹</h1>
+    <img src="https://i.ibb.co/rKdThJN3/gatito.jpg" alt="Gatito con rosa">
+    <p style="font-size: 1.3rem; color: #e60073; margin-top: 10px;">
+        Me encantasssss 💖
+    </p>
+</div>
+
+
+<script>
+    const noTexts = [
+        "¿Segura? 😢",
+        "Me estás rompiendo el corazón 💔",
+        "El perrito se está poniendo triste 🐶🥺",
+        "Yo había comprado chocolates... 🍫😞",
+        "Última oportunidad 😭💘"
+    ];
+
+    let noIndex = 0;
+    let scale = 1;
+
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const sadText = document.getElementById("sadText");
+
+    noBtn.addEventListener("click", () => {
+        sadText.textContent = noTexts[noIndex % noTexts.length];
+        noIndex++;
+
+        scale += 0.2;
+        yesBtn.style.transform = `scale(${scale})`;
+    });
+
+    yesBtn.addEventListener("click", () => {
+        document.getElementById("start").style.display = "none";
+        document.getElementById("final").style.display = "block";
+        lanzarConfeti();
+    });
+
+    function lanzarConfeti() {
+        for (let i = 0; i < 120; i++) {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.backgroundColor =
+                `hsl(${Math.random() * 360}, 100%, 70%)`;
+            confetti.style.animationDuration =
+                (Math.random() * 2 + 2) + "s";
+            document.body.appendChild(confetti);
+
+            setTimeout(() => confetti.remove(), 4000);
+        }
+    }
+</script>
+
+</body>
+</html>
+    
+  </body>
+  
+</html>
